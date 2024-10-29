@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model incidentes {
+  id          Int       @id @default(autoincrement())
+  tipo        String    @db.VarChar(255)
+  descripcion String?   @db.Text
+  ubicacion   String    @db.VarChar(255)
+  fecha       DateTime? @default(now()) @db.DateTime(0)
+  fotoName    String    @db.VarChar(255)
+  fotoUrl     String?   @db.Text
+  prioridad   String?   @db.VarChar(255)
+}
