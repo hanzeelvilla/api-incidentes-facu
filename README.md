@@ -1,5 +1,10 @@
 # API para administrar accidentes en la facultad
 
+## Requsitios
+
+* Node.js
+* MySQL 
+
 ## Configuración
 
 1. Instalar dependencias
@@ -37,3 +42,17 @@ create table incidentes (
 );
 describe incidentes;
 ```
+
+## ENDPOINTS    
+
+**GET** '/': Entry point principal del servidor **NO DE LA API**
+**GET** '/: api/incidentes/' Pro
+
+## Probar los endpoints con REST Client en VS Code
+
+Si no tienes instalado REST Client: 
+1. Abre VS Code
+2. Ve a las extensiones dando clic en el ícono de extensiones o en presionando *CTRL+SHIFT+X*
+3. Busca REST Client y da clic en instalar
+
+* Dentro de **api.http** da clic en **Send Request** que aparece arriba de cada endpoint
