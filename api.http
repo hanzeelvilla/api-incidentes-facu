@@ -5,3 +5,8 @@ GET http://localhost:3000
 
 # Lista de incidentes
 GET http://localhost:3000/api/incidentes
+
+###
+
+# Buscar por Id
+GET http://localhost:3000/api/incidentes/1

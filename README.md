@@ -19,10 +19,10 @@ DATABASE_URL="mysql://username:password@host:port/database_name"
 > [!NOTE]
 > El puerto default de MySQL es 3306
 
+3. Ejecutar la migración
 
-3. Crear la BD
 ```
-npx prisma db pull
+npx prisma migrate deploy
 ```
 
 SQL usado para la BD
