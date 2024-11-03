@@ -10,3 +10,36 @@ GET http://localhost:3000/api/incidentes
 
 # Buscar por Id
 GET http://localhost:3000/api/incidentes/1
+
+###
+
+# Crear un incidente
+POST http://localhost:3000/api/incidentes
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="tipo"
+
+Olvido apagar luces
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="descripcion"
+
+Luces encendidas
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="ubicacion"
+
+Auditorio 1
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="fecha"
+
+2024-11-02
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="prioridad"
+
+Media
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="viejon.jpg"
+Content-Type: image/jpeg
+
+< viejon.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
