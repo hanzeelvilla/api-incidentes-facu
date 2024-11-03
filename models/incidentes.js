@@ -36,7 +36,19 @@ export class IncidentesModel {
         const incidente = await prisma.incidentes.findUnique({
             where: { id: parseInt(id) }
         });
-        return incidente || null;
+        
+        if (!incidente) return null;
+
+        const params = {
+            Bucket: process.env.BUCKET_NAME,
+            Key: incidente.fotoName
+        }
+
+        const command = new GetObjectCommand(params);
+        const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
+        incidente.fotoUrl = url;
+
+        return incidente;
     }
 
     static async create(req) {
