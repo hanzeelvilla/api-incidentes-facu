@@ -13,7 +13,7 @@ model incidentes {
   descripcion String?   @db.Text
   ubicacion   String    @db.VarChar(255)
   fecha       DateTime? @default(now()) @db.DateTime(0)
-  fotoName    String    @db.VarChar(255)
+  fotoName    String?   @db.VarChar(255)
   fotoUrl     String?   @db.Text
   prioridad   String?   @db.VarChar(255)
 }

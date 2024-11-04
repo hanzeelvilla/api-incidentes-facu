@@ -13,6 +13,14 @@ GET http://localhost:3000/api/incidentes/1
 
 ###
 
+# Buscar por tipo
+GET http://localhost:3000/api/incidentes?tipo=Olvido%20apagar%20luces
+
+###
+
+#Busca por ubicacion
+GET http://localhost:3000/api/incidentes?ubicacion=Auditorio%201
+
 # Crear un incidente
 POST http://localhost:3000/api/incidentes
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW

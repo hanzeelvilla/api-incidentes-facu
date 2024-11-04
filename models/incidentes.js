@@ -1,5 +1,4 @@
 import crypto from 'node:crypto';
-import { incidentesSchema } from '../schemas/incidentes.js';
 import { PrismaClient } from '@prisma/client';
 import { S3Client, PutObjectCommand, GetObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
@@ -52,13 +51,38 @@ export class IncidentesModel {
         return incidente;
     }
 
-    static async create(req) {
-        const result = incidentesSchema.safeParse(req.body);
+    static async search(filters) {
+        const { tipo, ubicacion, fecha, prioridad } = filters;
 
-        if (!result.success) {
-            return null;
+        // Construye un objeto de búsqueda condicionalmente
+        const where = {};
+        if (tipo) where.tipo = tipo;
+        if (ubicacion) where.ubicacion = ubicacion;
+        if (fecha) where.fecha = new Date(fecha); 
+        if (prioridad) where.prioridad = prioridad;
+
+        const incidentes = await prisma.incidentes.findMany({
+            where
+        });
+
+        // Obtener URLs de las fotos
+        for (const incidente of incidentes) {
+            if (incidente.fotoName) {
+                const params = {
+                    Bucket: process.env.BUCKET_NAME,
+                    Key: incidente.fotoName
+                };
+
+                const command = new GetObjectCommand(params);
+                const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
+                incidente.fotoUrl = url;
+            }
         }
 
+        return incidentes;
+    }
+
+    static async create(req, res) {
         const imgName = randomId();
         const params = {
             Bucket: process.env.BUCKET_NAME,

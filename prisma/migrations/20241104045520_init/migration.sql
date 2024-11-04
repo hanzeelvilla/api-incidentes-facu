@@ -5,7 +5,7 @@ CREATE TABLE `incidentes` (
     `descripcion` TEXT NULL,
     `ubicacion` VARCHAR(255) NOT NULL,
     `fecha` DATETIME(0) NULL DEFAULT CURRENT_TIMESTAMP(0),
-    `fotoName` VARCHAR(255) NOT NULL,
+    `fotoName` VARCHAR(255) NULL,
     `fotoUrl` TEXT NULL,
     `prioridad` VARCHAR(255) NULL,
 

@@ -36,7 +36,7 @@ create table incidentes (
     descripcion text, 
     ubicacion varchar(255) not null, 
     fecha datetime default current_timestamp, 
-    fotoName varchar(255) not null, 
+    fotoName varchar(255), 
     fotoUrl text, 
     prioridad varchar(255)
 );
